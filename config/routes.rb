@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
 
-  devise_for :users
   # You can have the root of your site routed with "root"
-  root 'user#index'
+  root 'users#index'
+
+  devise_for :users
+
+  resources :users
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
