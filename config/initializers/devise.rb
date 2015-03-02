@@ -4,7 +4,7 @@ Devise.setup do |config|
   # The secret key used by Devise. Devise uses this key to generate
   # random tokens. Changing this key will render invalid all existing
   # confirmation, reset password and unlock tokens in the database.
-  # config.secret_key = '544df78f7286633adbd02781e8f1e154b12781ff9f7e9a4b9c14c94d8618dee49360b1117e94e7ea34ef489ccb3a917b7cccba7f59735ed7197677de2795d259'
+  config.secret_key = '544df78f7286633adbd02781e8f1e154b12781ff9f7e9a4b9c14c94d8618dee49360b1117e94e7ea34ef489ccb3a917b7cccba7f59735ed7197677de2795d259'
 
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
@@ -29,7 +29,7 @@ Devise.setup do |config|
   # session. If you need permissions, you should implement that in a before filter.
   # You can also supply a hash where the value is a boolean determining whether
   # or not authentication should be aborted when the value is not present.
-  # config.authentication_keys = [ :email ]
+  config.authentication_keys = [ :email ]
 
   # Configure parameters from the request object used for authentication. Each entry
   # given should be a request method and it will automatically be passed to the
@@ -97,7 +97,7 @@ Devise.setup do |config|
   config.stretches = Rails.env.test? ? 1 : 10
 
   # Setup a pepper to generate the encrypted password.
-  # config.pepper = 'd3c895951c62338f73e75e871f818bd5e8e40a3d95c39c27a2eb49217e42b2f897a3ab860660360f71cfcba473d56fb3ab474524ff303c362a317c75e77b3180'
+  config.pepper = 'd3c895951c62338f73e75e871f818bd5e8e40a3d95c39c27a2eb49217e42b2f897a3ab860660360f71cfcba473d56fb3ab474524ff303c362a317c75e77b3180'
 
   # ==> Configuration for :confirmable
   # A period that the user is allowed to access the website even without
@@ -145,12 +145,12 @@ Devise.setup do |config|
   # Email regex used to validate email formats. It simply asserts that
   # one (and only one) @ exists in the given string. This is mainly
   # to give user feedback and not to assert the e-mail validity.
-  # config.email_regexp = /\A[^@]+@[^@]+\z/
+  config.email_regexp = /\A[^@]+@[^@]+\z/
 
   # ==> Configuration for :timeoutable
   # The time you want to timeout the user session without activity. After this
   # time the user will be asked for credentials again. Default is 30 minutes.
-  # config.timeout_in = 30.minutes
+  config.timeout_in = 30.minutes
 
   # If true, expires auth token on session timeout.
   # config.expire_auth_token_on_timeout = false
@@ -205,7 +205,7 @@ Devise.setup do |config|
   # Turn scoped views on. Before rendering "sessions/new", it will first check for
   # "users/sessions/new". It's turned off by default because it's slower if you
   # are using only default views.
-  # config.scoped_views = false
+  config.scoped_views = true
 
   # Configure the default scope given to Warden. By default it's the first
   # devise role declared in your routes (usually :user).
