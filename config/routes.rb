@@ -1,11 +1,13 @@
 Rails.application.routes.draw do
 
+  resources :showdowns
+
   # You can have the root of your site routed with "root"
-  root 'users#index'
+  root 'showdowns#index'
 
   devise_for :users
 
-  resources :users
+  resources :showdowns
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

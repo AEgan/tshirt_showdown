@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Topic:</strong>
+  <%= @showdown.topic %>
+</p>
+
+<p>
+  <strong>Winning submission:</strong>
+  <%= @showdown.winning_submission %>
+</p>
+
+<p>
+  <strong>End date:</strong>
+  <%= @showdown.end_date %>
+</p>
+
+<%= link_to 'Edit', edit_showdown_path(@showdown) %> |
+<%= link_to 'Back', showdowns_path %>

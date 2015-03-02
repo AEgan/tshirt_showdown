@@ -17,18 +17,44 @@
 @import "bootstrap";
 
 $navbar-background: #F37321;
-$navbar-brand: white;
+$header-text: white;
 $footer-text: white;
 
-.navbar {
-  background-color: $navbar-background;
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
 }
 
-.footer {
+#wrapper {
+  min-height: 100%;
+  position: ralative;
+}
+
+#header {
+  
+}
+
+#content {
+  padding-bottom: 3em;
+}
+
+#footer {
+  width: 100%;
+  height: 3em; 
+  position: absolute;
+  bottom: 0;
+  left: 0;
   background-color: $navbar-background;
   color: $footer-text;
+  text-align: center;
+  vertical-align: middle;
 }
 
-.navbar-brand {
-  color: $navbar-brand;
+
+header {
+  background-color: $navbar-background;
+  a {
+    color: $header-text;
+  }
 }
