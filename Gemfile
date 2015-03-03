@@ -4,8 +4,6 @@ ruby "2.2.0"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -28,6 +26,9 @@ gem 'devise'
 
 # User PostgreSQL for database
 gem 'pg'
+
+# Alternative to IRB SHell and helps with debugging
+gem 'pry'
 
 # Bootstrap helps with the css and layouts
 gem 'bootstrap-sass', '~> 3.2.0'

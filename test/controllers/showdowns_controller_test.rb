@@ -1,12 +1,10 @@
-
 require 'test_helper'
 
 class ShowdownsControllerTest < ActionController::TestCase
 
-  setup do
+  before do
     @showdown = FactoryGirl.create(:showdown)  
-    @user = FactoryGirl.create(:user)
-    sign_in @user
+    sign_in @showdown.user
   end
 
   it "gets index" do
@@ -55,8 +53,8 @@ class ShowdownsControllerTest < ActionController::TestCase
     assert_redirected_to showdowns_path
   end
 
-  teardown do
-    sign_out @user
+  after do
+    sign_out @showdown.user
   end
 
 end

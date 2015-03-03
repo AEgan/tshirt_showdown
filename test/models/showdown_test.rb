@@ -16,8 +16,8 @@ class ShowdownTest < ActiveSupport::TestCase
     refute FactoryGirl.build(:showdown, end_date: nil).valid?
   end
 
-  it "is invalid without closed" do
-    refute FactoryGirl.build(:showdown, closed: nil).valid?
+  it "has default value for closed" do
+    FactoryGirl.build(:showdown, closed: nil).valid?
   end
 
   # Checks Model Methods
