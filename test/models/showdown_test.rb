@@ -8,12 +8,16 @@ class ShowdownTest < ActiveSupport::TestCase
     showdown.valid?
   end
 
-  # Checks Model Validations
+  #Checks Model Validations
   it "is invalid without a email" do 
     refute FactoryGirl.build(:showdown, theme: nil).valid?
   end
   it "is invalid without a password" do 
     refute FactoryGirl.build(:showdown, end_date: nil).valid?
+  end
+
+  it "is invalid without closed" do
+    refute FactoryGirl.build(:showdown, closed: nil).valid?
   end
 
   # Checks Model Methods
@@ -24,4 +28,9 @@ class ShowdownTest < ActiveSupport::TestCase
   it "returns a showdown's end_date" do 
     showdown.end_date.must_equal Date.new(2015, 03, 02)
   end
+
+  it "returns a showdown's closed property" do
+    showdown.closed.must_equal false
+  end
+
 end

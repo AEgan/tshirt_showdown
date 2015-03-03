@@ -5,6 +5,8 @@ class ShowdownsControllerTest < ActionController::TestCase
 
   setup do
     @showdown = FactoryGirl.create(:showdown)  
+    @user = FactoryGirl.create(:user)
+    sign_in @user
   end
 
   it "gets index" do
@@ -20,7 +22,9 @@ class ShowdownsControllerTest < ActionController::TestCase
 
   it "creates showdown" do
     assert_difference('Showdown.count') do
-      post :create, showdown: { end_date: @showdown.end_date, theme: @showdown.theme, winning_submission: @showdown.winning_submission }
+      post :create, showdown: { end_date: @showdown.end_date, theme: @showdown.theme, 
+                                winning_submission: @showdown.winning_submission, 
+                                closed: @showdown.closed }
     end
 
     assert_redirected_to showdown_path(assigns(:showdown))
@@ -37,7 +41,9 @@ class ShowdownsControllerTest < ActionController::TestCase
   end
 
   it "updates showdown" do
-    patch :update, id: @showdown, showdown: { end_date: @showdown.end_date, theme: @showdown.theme, winning_submission: @showdown.winning_submission }
+    patch :update, id: @showdown, showdown: { end_date: @showdown.end_date, theme: @showdown.theme, 
+                                              winning_submission: @showdown.winning_submission,
+                                              closed: @showdown.closed }
     assert_redirected_to showdown_path(assigns(:showdown))
   end
 
@@ -48,4 +54,9 @@ class ShowdownsControllerTest < ActionController::TestCase
 
     assert_redirected_to showdowns_path
   end
+
+  teardown do
+    sign_out @user
+  end
+
 end
