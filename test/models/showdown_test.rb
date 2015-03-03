@@ -10,15 +10,15 @@ class ShowdownTest < ActiveSupport::TestCase
 
   # Checks Model Validations
   it "is invalid without a email" do 
-    refute FactoryGirl.build(:showdown, topic: nil).valid?
+    refute FactoryGirl.build(:showdown, theme: nil).valid?
   end
   it "is invalid without a password" do 
     refute FactoryGirl.build(:showdown, end_date: nil).valid?
   end
 
   # Checks Model Methods
-  it "returns a showdown's topic" do 
-    showdown.topic.must_equal 'Atari themed shirts'
+  it "returns a showdown's theme" do 
+    showdown.theme.must_equal 'Atari themed shirts'
   end
 
   it "returns a showdown's end_date" do 

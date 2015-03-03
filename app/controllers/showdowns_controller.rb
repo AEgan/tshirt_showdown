@@ -1,6 +1,7 @@
 class ShowdownsController < ApplicationController
   before_action :set_showdown, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!
+  
   # GET /showdowns
   # GET /showdowns.json
   def index
@@ -69,6 +70,6 @@ class ShowdownsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def showdown_params
-      params.require(:showdown).permit(:topic, :winning_submission, :end_date)
+      params.require(:showdown).permit(:theme, :winning_submission, :end_date)
     end
 end

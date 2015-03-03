@@ -1,6 +1,6 @@
 class Showdown < ActiveRecord::Base
 
-  validates :topic, :end_date, presence: true
+  validates :theme, :end_date, presence: true
 
 
 end

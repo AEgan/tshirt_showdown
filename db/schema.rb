@@ -11,13 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150302210835) do
+ActiveRecord::Schema.define(version: 20150303145437) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "showdowns", force: :cascade do |t|
-    t.string   "topic"
+    t.string   "theme"
     t.integer  "winning_submission"
     t.date     "end_date"
     t.datetime "created_at",         null: false

@@ -1,3 +1,4 @@
+
 require 'test_helper'
 
 class ShowdownsControllerTest < ActionController::TestCase
@@ -19,7 +20,7 @@ class ShowdownsControllerTest < ActionController::TestCase
 
   it "creates showdown" do
     assert_difference('Showdown.count') do
-      post :create, showdown: { end_date: @showdown.end_date, topic: @showdown.topic, winning_submission: @showdown.winning_submission }
+      post :create, showdown: { end_date: @showdown.end_date, theme: @showdown.theme, winning_submission: @showdown.winning_submission }
     end
 
     assert_redirected_to showdown_path(assigns(:showdown))
@@ -36,7 +37,7 @@ class ShowdownsControllerTest < ActionController::TestCase
   end
 
   it "updates showdown" do
-    patch :update, id: @showdown, showdown: { end_date: @showdown.end_date, topic: @showdown.topic, winning_submission: @showdown.winning_submission }
+    patch :update, id: @showdown, showdown: { end_date: @showdown.end_date, theme: @showdown.theme, winning_submission: @showdown.winning_submission }
     assert_redirected_to showdown_path(assigns(:showdown))
   end
 

@@ -1,1 +1,1 @@
-json.extract! @showdown, :id, :topic, :winning_submission, :end_date, :created_at, :updated_at
+json.extract! @showdown, :id, :theme, :winning_submission, :end_date, :created_at, :updated_at
