@@ -9,11 +9,15 @@ class ShowdownTest < ActiveSupport::TestCase
   end
 
   #Checks Model Validations
-  it "is invalid without a email" do 
+  it "is invalid without a theme" do 
     refute FactoryGirl.build(:showdown, theme: nil).valid?
   end
-  it "is invalid without a password" do 
+  it "is invalid without an end_date" do 
     refute FactoryGirl.build(:showdown, end_date: nil).valid?
+  end
+
+  it "is invalid without a user" do 
+    refute FactoryGirl.build(:showdown, user_id: nil).valid?
   end
 
   it "has default value for closed" do

@@ -7,13 +7,16 @@
 
 <p>
   <strong>Winning submission:</strong>
-  <%= @showdown.winning_submission %>
+  <%= @showdown.winning_submission || 'Showdown in progress'%>
 </p>
 
 <p>
   <strong>End date:</strong>
   <%= @showdown.end_date %>
 </p>
+
+<h3>Current Submissions</h3>
+
 
 <%= link_to 'Edit', edit_showdown_path(@showdown) %> |
 <%= link_to 'Back', showdowns_path %>
