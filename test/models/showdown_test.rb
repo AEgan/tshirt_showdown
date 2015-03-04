@@ -20,8 +20,12 @@ class ShowdownTest < ActiveSupport::TestCase
     refute FactoryGirl.build(:showdown, user_id: nil).valid?
   end
 
+  it "is invalid without a valid user" do 
+    refute FactoryGirl.build(:showdown_invalid_user).valid?
+  end
+
   it "has default value for closed" do
-    FactoryGirl.build(:showdown, closed: nil).valid?
+    assert FactoryGirl.build(:showdown, closed: nil).valid?
   end
 
   # Checks Model Methods
@@ -35,6 +39,10 @@ class ShowdownTest < ActiveSupport::TestCase
 
   it "returns a showdown's closed property" do
     showdown.closed.must_equal false
+  end
+
+  it "returns a valid user" do 
+    showdown.user.must_be_instance_of User
   end
 
 end
