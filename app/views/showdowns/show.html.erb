@@ -15,8 +15,15 @@
   <%= @showdown.user.email %>
 </p>
 
-<h3>Current Submissions</h3>
-
-
 <%= link_to 'Edit', edit_showdown_path(@showdown) %> |
-<%= link_to 'Back', showdowns_path %>
+<%= link_to 'Back', showdowns_path %> |
+<%= link_to 'Submit Proof', new_showdown_submission_path(@showdown) %>
+
+<h3>Current Submissions</h3>
+<%= @showdown.submissions.each do |submission| %>
+  <%= submission.user.email %>
+<% end %>
+
+
+
+

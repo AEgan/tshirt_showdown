@@ -1,5 +1,6 @@
 class SubmissionsController < ApplicationController
   before_action :set_submission, only: [:show, :edit, :update, :destroy]
+  before_action :set_showdown
 
   # GET /submissions
   # GET /submissions.json
@@ -15,6 +16,7 @@ class SubmissionsController < ApplicationController
   # GET /submissions/new
   def new
     @submission = Submission.new
+    @showdown = Showdown.find(params[:showdown_id])
   end
 
   # GET /submissions/1/edit
@@ -24,10 +26,16 @@ class SubmissionsController < ApplicationController
   # POST /submissions
   # POST /submissions.json
   def create
-    @submission = Submission.new(submission_params)
+    @submission = Submission.new()
+    @submission.assign_attributes(
+        composite_id: Submission.extract_composite_id(submission_params[:composite_id]),
+        user: current_user,
+        showdown_id: params[:showdown_id]
+      )
+
     respond_to do |format|
-      if @submission.save
-        format.html { redirect_to @submission, notice: 'Submission was successfully created.' }
+      if @submission.save!
+        format.html { redirect_to [@showdown, @submission], notice: 'Submission was successfully created.' }
         format.json { render :show, status: :created, location: @submission }
       else
         format.html { render :new }
@@ -41,7 +49,7 @@ class SubmissionsController < ApplicationController
   def update
     respond_to do |format|
       if @submission.update(submission_params)
-        format.html { redirect_to @submission, notice: 'Submission was successfully updated.' }
+        format.html { redirect_to [@showdown, @submission], notice: 'Submission was successfully updated.' }
         format.json { render :show, status: :ok, location: @submission }
       else
         format.html { render :edit }
@@ -55,7 +63,7 @@ class SubmissionsController < ApplicationController
   def destroy
     @submission.destroy
     respond_to do |format|
-      format.html { redirect_to submissions_url, notice: 'Submission was successfully destroyed.' }
+      format.html { redirect_to showdowns_submissions_url, notice: 'Submission was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -66,8 +74,12 @@ class SubmissionsController < ApplicationController
       @submission = Submission.find(params[:id])
     end
 
+    def set_showdown
+      @showdown = Showdown.find(params[:showdown_id])
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def submission_params
-      params.require(:submission).permit(:composite_id, :user_id)
+      params.require(:submission).permit(:composite_id, :user_id, :showdown_id)
     end
 end

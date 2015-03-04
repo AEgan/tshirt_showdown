@@ -25,4 +25,16 @@ class UserTest < ActiveSupport::TestCase
   it "returns a user's password" do 
     user.password.must_equal "theprofessler"
   end
+
+  it "has valid showdowns" do 
+    user.showdowns.each do |showdown|
+      showdown.valid?
+    end 
+  end
+
+  it "has valid submissions" do 
+    user.submissions.each do |submission|
+      submission.valid?
+    end 
+  end
 end

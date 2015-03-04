@@ -1,15 +1,14 @@
 Rails.application.routes.draw do
 
-  resources :submissions
-
-  resources :showdowns
-
   # You can have the root of your site routed with "root"
   root 'showdowns#index'
 
   devise_for :users
 
-  resources :showdowns
+  resources :showdowns do 
+    resources :submissions
+  end
+
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

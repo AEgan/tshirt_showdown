@@ -21,7 +21,7 @@ class SubmissionsControllerTest < ActionController::TestCase
     assert_difference('Submission.count') do
       post :create, submission: { composite_id: @submission.composite_id, 
                                   user_id: @submission.user_id,
-                                                  showdown_id: @submission.showdown_id}
+                                  showdown_id: @submission.showdown_id}
     end
 
     assert_redirected_to submission_path(assigns(:submission))
