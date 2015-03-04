@@ -6,8 +6,8 @@
   <thead>
     <tr>
       <th>Theme</th>
-      <th>Winning submission</th>
       <th>End date</th>
+      <th>Created By</th
       <th colspan="3">Actions</th>
     </tr>
   </thead>
@@ -16,8 +16,8 @@
     <% @showdowns.each do |showdown| %>
       <tr>
         <td><%= showdown.theme %></td>
-        <td><%= showdown.winning_submission || 'Showdown in progress' %></td>
         <td><%= showdown.end_date %></td>
+        <td><%= showdown.user.email%></td>
         <td><%= link_to 'Show', showdown %></td>
         <td><%= link_to 'Edit', edit_showdown_path(showdown) %></td>
        <!-- <td><%= link_to 'Destroy', showdown, method: :delete, data: { confirm: 'Are you sure?' } %></td> -->

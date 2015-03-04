@@ -2,7 +2,6 @@ require 'test_helper'
 
 class SubmissionTest < ActiveSupport::TestCase
   let(:submission) { FactoryGirl.create(:submission) }
-  let(:submission_with_user) { FactoryGirl.create(:submission_with_user) }
   #Checks Factories and Fxitures
   it "has a valid factory" do
     submission.must_be :valid?

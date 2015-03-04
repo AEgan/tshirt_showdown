@@ -2,7 +2,7 @@ require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
   
-  let(:user) { FactoryGirl.create(:user) }
+  let(:user) { FactoryGirl.create(:nathan) }
 
   # Checks Factories and Fxitures
   it "has a valid factory" do
@@ -19,10 +19,10 @@ class UserTest < ActiveSupport::TestCase
 
   # Checks Model Methods
   it "returns a user's email" do 
-    user.email.must_equal "dpulliam@customink.com"
+    user.email.must_equal "nhessler@customink.com"
   end
 
   it "returns a user's password" do 
-    user.password.must_equal "12345678"
+    user.password.must_equal "theprofessler"
   end
 end

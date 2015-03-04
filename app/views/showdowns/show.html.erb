@@ -6,13 +6,13 @@
 </p>
 
 <p>
-  <strong>Winning submission:</strong>
-  <%= @showdown.winning_submission || 'Showdown in progress'%>
+  <strong>End date:</strong>
+  <%= @showdown.end_date %>
 </p>
 
 <p>
-  <strong>End date:</strong>
-  <%= @showdown.end_date %>
+  <strong>Created By:</strong>
+  <%= @showdown.user.email %>
 </p>
 
 <h3>Current Submissions</h3>

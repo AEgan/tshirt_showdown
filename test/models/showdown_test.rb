@@ -46,7 +46,7 @@ class ShowdownTest < ActiveSupport::TestCase
   end
 
   it "returns valid submissions" do 
-    showdown.submissions.each |submission| do
+    showdown.submissions.each do |submission|
       assert submission.valid?
     end
   end
