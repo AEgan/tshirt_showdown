@@ -45,4 +45,10 @@ class ShowdownTest < ActiveSupport::TestCase
     showdown.user.must_be_instance_of User
   end
 
+  it "returns valid submissions" do 
+    showdown.submissions.each |submission| do
+      assert submission.valid?
+    end
+  end
+
 end
