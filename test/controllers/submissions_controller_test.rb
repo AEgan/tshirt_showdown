@@ -7,13 +7,13 @@ class SubmissionsControllerTest < ActionController::TestCase
   end
 
   it "gets index" do
-    get :index
+    get :index, id: @submission, showdown_id: @submission.showdown_id
     assert_response :success
     assert_not_nil assigns(:submissions)
   end
 
   it "gets new" do
-    get :new
+    get :new, showdown_id: @submission.showdown_id
     assert_response :success
   end
 
@@ -28,25 +28,26 @@ class SubmissionsControllerTest < ActionController::TestCase
   end
 
   it "shows submission" do
-    get :show, id: @submission
+    get :show, id: @submission, showdown_id: @submission.showdown_id
     assert_response :success
   end
 
   it "gets edit" do
-    get :edit, id: @submission
+    get :edit, id: @submission, showdown_id: @submission.showdown_id
     assert_response :success
   end
 
   it "updates submission" do
     patch :update, id: @submission, submission: { composite_id: @submission.composite_id, 
                                                   user_id: @submission.user_id,
-                                                  showdown_id: @submission.showdown_id }
+                                                  showdown_id: @submission.showdown_id },
+                                    showdown_id: @submission.showdown_id
     assert_redirected_to submission_path(assigns(:submission))
   end
 
   it "destroys submission" do
     assert_difference('Submission.count', -1) do
-      delete :destroy, id: @submission
+      delete :destroy, id: @submission, showdown_id: @submission.showdown_id
     end
 
     assert_redirected_to submissions_path

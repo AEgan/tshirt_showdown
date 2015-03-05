@@ -2,29 +2,22 @@ class SubmissionsController < ApplicationController
   before_action :set_submission, only: [:show, :edit, :update, :destroy]
   before_action :set_showdown
 
-  # GET /submissions
-  # GET /submissions.json
   def index
     @submissions = Submission.all
   end
 
-  # GET /submissions/1
-  # GET /submissions/1.json
   def show
   end
 
-  # GET /submissions/new
   def new
     @submission = Submission.new
     @showdown = Showdown.find(params[:showdown_id])
   end
 
-  # GET /submissions/1/edit
   def edit
+
   end
 
-  # POST /submissions
-  # POST /submissions.json
   def create
     @submission = Submission.new()
     @submission.assign_attributes(
@@ -44,10 +37,9 @@ class SubmissionsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /submissions/1
-  # PATCH/PUT /submissions/1.json
   def update
     respond_to do |format|
+      #ADD PROCESS FOR EXTRAC COMPOSITE ID
       if @submission.update(submission_params)
         format.html { redirect_to [@showdown, @submission], notice: 'Submission was successfully updated.' }
         format.json { render :show, status: :ok, location: @submission }
@@ -58,8 +50,6 @@ class SubmissionsController < ApplicationController
     end
   end
 
-  # DELETE /submissions/1
-  # DELETE /submissions/1.json
   def destroy
     @submission.destroy
     respond_to do |format|
