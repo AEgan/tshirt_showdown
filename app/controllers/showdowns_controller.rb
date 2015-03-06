@@ -2,28 +2,23 @@ class ShowdownsController < ApplicationController
   before_action :set_showdown, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
 
-  # GET /showdowns
-  # GET /showdowns.json
+
   def index
     @showdowns = Showdown.all
   end
 
-  # GET /showdowns/1
-  # GET /showdowns/1.json
+
   def show
   end
 
-  # GET /showdowns/new
+
   def new
     @showdown = Showdown.new
   end
 
-  # GET /showdowns/1/edit
   def edit
   end
 
-  # POST /showdowns
-  # POST /showdowns.json
   def create
     @showdown = Showdown.new(showdown_params)
     @showdown.user = current_user
@@ -38,8 +33,6 @@ class ShowdownsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /showdowns/1
-  # PATCH/PUT /showdowns/1.json
   def update
     respond_to do |format|
       if @showdown.update(showdown_params)
@@ -52,8 +45,6 @@ class ShowdownsController < ApplicationController
     end
   end
 
-  # DELETE /showdowns/1
-  # DELETE /showdowns/1.json
   def destroy
     @showdown.destroy
     respond_to do |format|

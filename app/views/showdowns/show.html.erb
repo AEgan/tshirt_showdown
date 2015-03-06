@@ -1,33 +1,29 @@
-<p id="notice"><%= notice %></p>
-<div class="showdown jumbotron">
-  <h1>The <%= @showdown.theme %>  T-Shirt Showdown</h1>
-  <p><strong>Voting Ends On:</strong> <%= @showdown.end_date %></p>
+<div class="showdown row">
+  <h1>The <em><%= @showdown.theme %></em> Showdown</h1>
 
-  <div class="showdown-actions">
-    <%= link_to 'All Showdowns', showdowns_path, class: 'action btn btn-lg btn-primary', role: 'button'  %> 
+  <h3><strong>Voting Ends On:</strong> <%= @showdown.end_date %> </h3>
+
+  <span class="showdown-actions"> 
     <%= link_to 'Submit Proof', new_showdown_submission_path(@showdown), class: 'action btn btn-lg btn-primary', role: 'button'  %>
-  </div>
+  </span>
 </div>
-<div id='current-submissions row'>
-  <h3>Current Submissions</h3>
+<div class='current-submissions row'>
+  <% unless @showdown.submissions.empty? %> <h3>Current Submissions</h3> <% end %>
   <% @showdown.submissions.each do |submission| %>
     <div class="submission col-md-4">
       <div class="row submission-user">
         <h4>Submitted By:</h4> <%= submission.user.email %>
       </div>
       <div class="row submission-proof">
-        <img width="=150" height="150" src=<%="http://www.customink.com/designs/proofs/#{submission.composite_id}/front.jpg"%>>
-        <img width="150" height="150" src=<%="http://www.customink.com/designs/proofs/#{submission.composite_id}/back.jpg"%>> 
+        <img width="170" height="170" src=<%="http://www.customink.com/designs/proofs/#{submission.composite_id}/front.jpg"%>>
+        <img width="170" height="170" src=<%="http://www.customink.com/designs/proofs/#{submission.composite_id}/back.jpg"%>> 
       </div>
       <div class="row submission-actions">
-        <button type="button" class="btn btn-primary btn-lg col-md-4">Vote</button>
-        <button type="button" class="btn btn-success btn-lg col-md-4">View</button>
+        <%= link_to 'Vote', votes_path(submission_id: submission.id, showdown_id: @showdown.id), class: 'btn btn-primary btn-lg col-md-3', role: 'button', method: :post %>
+        <%= link_to 'View', showdown_submission_path(@showdown, submission), class: 'btn btn-success btn-lg col-md-3', role: 'button' %>
+        <%= link_to 'Remove', showdown_submission_path(@showdown, submission), class: 'btn btn-danger btn-lg col-md-3', role: 'button', method: :delete, data: {confirm: 'Are you super duper sure?'} %>
 
       </div>
     </div>
   <% end %>
 </div>
-
-
-
-

@@ -8,4 +8,5 @@ class User < ActiveRecord::Base
 
   has_many :showdowns
   has_many :submissions
+  has_many :votes
 end

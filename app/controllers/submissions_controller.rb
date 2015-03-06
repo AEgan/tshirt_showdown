@@ -22,7 +22,6 @@ class SubmissionsController < ApplicationController
         user: current_user,
         showdown_id: params[:showdown_id]
       )
-
     respond_to do |format|
       if @submission.save!
         format.html { redirect_to [@showdown, @submission], notice: 'Submission was successfully created.' }
@@ -36,7 +35,8 @@ class SubmissionsController < ApplicationController
 
   def update
     respond_to do |format|
-      #ADD PROCESS FOR EXTRAC COMPOSITE ID
+      submission_params[:composite_id] = Submission.extract_composite_id(submission_params[:composite_id]) 
+      submission_params[:total_votes] = @submission.votes +
       if @submission.update(submission_params)
         format.html { redirect_to [@showdown, @submission], notice: 'Submission was successfully updated.' }
         format.json { render :show, status: :ok, location: @submission }
@@ -50,7 +50,7 @@ class SubmissionsController < ApplicationController
   def destroy
     @submission.destroy
     respond_to do |format|
-      format.html { redirect_to showdown_submissions_url, notice: 'Submission was successfully destroyed.' }
+      format.html { redirect_to showdown_path(@showdown), notice: 'Submission was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

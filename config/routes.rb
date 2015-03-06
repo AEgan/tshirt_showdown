@@ -9,6 +9,9 @@ Rails.application.routes.draw do
     resources :submissions
   end
 
+  resources :votes 
+
+  post '/votes', to: 'votes#create'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

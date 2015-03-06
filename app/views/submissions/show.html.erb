@@ -1,14 +1,11 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Composite:</strong>
-  <%= @submission.composite_id %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @submission.user_id %>
-</p>
-
-<%= link_to 'Edit', edit_showdown_submission_path(@showdown, @submission) %> |
-<%= link_to 'Back', showdown_path(@showdown) %>
+<div class="submission col-md-12">
+  <div class="row submission-user">
+    <h4><strong>Submitted By:</strong></h4><strong> <%= @submission.user.email %></strong>
+  </div>
+  <div class="row submission-proof">
+    <img width="400" height="400" src=<%="http://www.customink.com/designs/proofs/#{@submission.composite_id}/front.jpg"%>>
+    <img width="400" height="400" src=<%="http://www.customink.com/designs/proofs/#{@submission.composite_id}/back.jpg"%>> 
+  </div>
+</div>

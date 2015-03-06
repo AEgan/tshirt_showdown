@@ -54,7 +54,18 @@ html, body {
 
 header {
   background-color: $navbar-background;
+}
+
+.navbar {
   a {
     color: $header-text;
   }
+  a:hover {
+    background-color:transparent;
+    color: $header-text;
+  }
+}
+
+a:visited.btn {
+  color: $header-text;
 }
