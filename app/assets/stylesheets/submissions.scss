@@ -1,3 +1,14 @@
 // Place all the styles related to the Submissions controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.submission {
+  margin-bottom: 1em;
+}
+
+.submission-actions {
+  button {
+    margin: 0.5em;
+  }
+}
+

@@ -6,7 +6,7 @@ class UserTest < ActiveSupport::TestCase
 
   # Checks Factories and Fxitures
   it "has a valid factory" do
-    user.valid?
+    assert user.valid?
   end
 
   # Checks Model Validations
@@ -17,24 +17,4 @@ class UserTest < ActiveSupport::TestCase
     refute FactoryGirl.build(:user, password: nil).valid?
   end
 
-  # Checks Model Methods
-  it "returns a user's email" do 
-    user.email.must_equal "nhessler@customink.com"
-  end
-
-  it "returns a user's password" do 
-    user.password.must_equal "theprofessler"
-  end
-
-  it "has valid showdowns" do 
-    user.showdowns.each do |showdown|
-      showdown.valid?
-    end 
-  end
-
-  it "has valid submissions" do 
-    user.submissions.each do |submission|
-      submission.valid?
-    end 
-  end
 end

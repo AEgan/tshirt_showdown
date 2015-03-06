@@ -16,13 +16,22 @@ class SubmissionTest < ActiveSupport::TestCase
     refute FactoryGirl.build(:submission, composite_id: nil).valid?
   end
 
+  it "is invalid without a showdown_id" do 
+    refute FactoryGirl.build(:submission, showdown_id: nil).valid?
+  end
+
+  it "is invalid without a properly formatted composite_id" do
+    submission.composite_id = "ant0-0016-abmp/"
+
+    refute submission.save!
+  end
+  
   # Checks Model Methods
-  it "returns a submission's user" do 
-    submission.user.must_be_kind_of User 
-  end
 
-  it "returns a submission's composite_id" do 
-    submission.composite_id.must_equal 'wvrq0-0015-1b0t'
-  end
-
+  describe "class" do
+    it "method extract_composite_id returns a submission's composite_id" do 
+      url = "http://www.customink.com/designs/proofs/ant0-0016-abmp/front.jpg"
+      Submission.extract_composite_id(url).must_equal "ant0-0016-abmp"
+    end
+  end 
 end
