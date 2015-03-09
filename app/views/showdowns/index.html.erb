@@ -16,10 +16,8 @@
           <td><%= showdown.theme %></td>
           <td><%= showdown.end_date %></td>
           <td><%= showdown.user.email%></td>
-        <td><%= link_to 'Edit', edit_showdown_path(showdown) %></td>
-        <td><%= link_to 'Remove', showdown_path(showdown),
-                                  method: :delete,
-                                  data: {confirm: 'Are you super duper sure?'} %></td>
+          <td><%= link_to 'Edit', edit_showdown_path(showdown) if showdown.user == current_user %></td>
+          <td><%= link_to 'Remove', showdown_path(showdown), method: :delete, data: {confirm: 'Are you super duper sure?'} if showdown.user == current_user %></td>
       </tr>
     <% end %>
   </tbody>

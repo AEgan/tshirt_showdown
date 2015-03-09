@@ -2,15 +2,13 @@ require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
   
-  let(:user) { FactoryGirl.create(:nathan) }
-
-  # Checks Factories and Fxitures
-  it "has a valid factory" do
-        skip
-    #refactor to use save
-  end
+  let(:user) { FactoryGirl.build(:nathan) }
 
   # Checks Model Validations
+  it "it saves with valid data" do
+    assert user.save
+  end
+
   it "is invalid without a email" do 
     refute FactoryGirl.build(:user, email: nil).valid?
   end

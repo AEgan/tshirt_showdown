@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :submission do
-    composite_id "wvrq0-0015-1b0t"
+    composite_id "ant0-0016-abmp"
     user
     showdown
   end

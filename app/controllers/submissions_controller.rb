@@ -36,7 +36,7 @@ class SubmissionsController < ApplicationController
   def update
     respond_to do |format|
       submission_params[:composite_id] = Submission.extract_composite_id(submission_params[:composite_id]) 
-      submission_params[:total_votes] = @submission.votes +
+      #submission_params[:total_votes] = @submission.votes +
       if @submission.update(submission_params)
         format.html { redirect_to [@showdown, @submission], notice: 'Submission was successfully updated.' }
         format.json { render :show, status: :ok, location: @submission }

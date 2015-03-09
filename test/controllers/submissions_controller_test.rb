@@ -13,10 +13,9 @@ class SubmissionsControllerTest < ActionController::TestCase
 
   it "creates submission" do
     assert_difference('Submission.count') do
-      post :create, submission: { composite_id: @submission.composite_id, 
+      post :create, showdown_id: @submission.showdown, submission: { composite_id: @submission.composite_id, 
                                   user_id: @submission.user_id,
-                                  showdown_id: @submission.showdown_id},
-                    showdown_id: @submission.showdown.id
+                                  showdown_id: @submission.showdown_id }
     end
 
     assert_redirected_to showdown_submission_path(@submission.showdown_id, assigns(:submission))
@@ -33,10 +32,11 @@ class SubmissionsControllerTest < ActionController::TestCase
   end
 
   it "updates submission" do
-    patch :update, id: @submission, submission: { composite_id: @submission.composite_id, 
-                                                  user_id: @submission.user_id,
-                                                  showdown_id: @submission.showdown_id },
-                                    showdown_id: @submission.showdown_id
+    patch :update, submission: {  composite_id: @submission.composite_id, 
+                                  user_id: @submission.user_id,
+                                  showdown_id: @submission.showdown_id },
+                                  showdown_id: @submission.showdown_id,
+                                  id: @submission.id
     assert_redirected_to showdown_submission_path(@submission.showdown_id, assigns(:submission))
   end
 
@@ -45,7 +45,7 @@ class SubmissionsControllerTest < ActionController::TestCase
       delete :destroy, id: @submission, showdown_id: @submission.showdown_id
     end
 
-    assert_redirected_to showdown_submissions_path
+    assert_redirected_to showdown_path(@submission.showdown)
   end
 
   after do
