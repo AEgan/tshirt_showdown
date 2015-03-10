@@ -23,7 +23,7 @@ class SubmissionsController < ApplicationController
         showdown_id: params[:showdown_id]
       )
     respond_to do |format|
-      if @submission.save!
+      if @submission.save
         format.html { redirect_to [@showdown, @submission], notice: 'Submission was successfully created.' }
         format.json { render :show, status: :created, location: @submission }
       else
@@ -38,7 +38,7 @@ class SubmissionsController < ApplicationController
       submission_params[:composite_id] = Submission.extract_composite_id(submission_params[:composite_id]) 
       #submission_params[:total_votes] = @submission.votes +
       if @submission.update(submission_params)
-        format.html { redirect_to [@showdown, @submission], notice: 'Submission was successfully updated.' }
+        format.html { redirect_to [@showdown, @submission], notice: 'Submission was successfully updated.'}
         format.json { render :show, status: :ok, location: @submission }
       else
         format.html { render :edit }

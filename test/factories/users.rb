@@ -11,6 +11,8 @@ FactoryGirl.define do
       email "nhessler@customink.com"
       password "theprofessler"
     end
+
+
   end
 
 end

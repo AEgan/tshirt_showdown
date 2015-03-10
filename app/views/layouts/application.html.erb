@@ -22,8 +22,8 @@
           </div>
           <% if current_user %>
             <div id="navbar" class="navbar-collapse collapse navbar-right">
-                 <h4><%= link_to "All Showdowns", showdowns_path %> |</h4>
-                 <h4><%= link_to "Logout", destroy_user_session_path, :method => :delete %></h4>
+                 <%= link_to "All Showdowns", showdowns_path %> |
+                 <%= link_to "Logout", destroy_user_session_path, :method => :delete %>
             </div><!--/.navbar-collapse -->
           <% end %>
         </div>

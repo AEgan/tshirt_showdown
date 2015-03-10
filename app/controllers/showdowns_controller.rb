@@ -9,6 +9,12 @@ class ShowdownsController < ApplicationController
 
 
   def show
+    @has_voted = Showdown.get_current_user_votes(@showdown.id, current_user.id).any?
+    unless @showdown.over?
+      render :show
+    else
+      render template: 'showdowns/showdown_over.html.erb'
+    end
   end
 
 

@@ -20,11 +20,14 @@
         <img width="170" height="170" src=<%="http://www.customink.com/designs/proofs/#{submission.composite_id}/back.jpg"%>> 
       </div>
       <div class="row submission-actions">
+        <% unless @has_voted %>
+          <%= link_to 'Vote', votes_path(submission_id: submission.id, showdown_id: @showdown.id), class: 'btn btn-primary btn-lg col-md-3', role: 'button', method: :post %>
+          <% #=link_to 'View', showdown_submission_path(@showdown, submission), class: 'btn btn-success btn-lg col-md-3', role: 'button' %>
+          <% #=link_to 'Remove', showdown_submission_path(@showdown, submission), class: 'btn btn-danger btn-lg col-md-3', role: 'button', method: :delete, data: {confirm: 'Are you super duper sure?'} %> 
 
-        <%= link_to 'Vote', votes_path(submission_id: submission.id, showdown_id: @showdown.id), class: 'btn btn-primary btn-lg col-md-3', role: 'button', method: :post %>
-
-        <% #=link_to 'View', showdown_submission_path(@showdown, submission), class: 'btn btn-success btn-lg col-md-3', role: 'button' %>
-        <% #=link_to 'Remove', showdown_submission_path(@showdown, submission), class: 'btn btn-danger btn-lg col-md-3', role: 'button', method: :delete, data: {confirm: 'Are you super duper sure?'} %> 
+        <% else %>
+          You have already voted!
+        <% end %>
 
       </div>
     </div>
