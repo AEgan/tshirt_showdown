@@ -1,7 +1,7 @@
 class ShowdownsController < ApplicationController
+
   before_action :set_showdown, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
-
 
   def index
     @showdowns = Showdown.all
@@ -13,7 +13,8 @@ class ShowdownsController < ApplicationController
     unless @showdown.over?
       render :show
     else
-      render template: 'showdowns/showdown_over.html.erb'
+      @winning_submission = @showdown.get_winner
+      render template: 'showdowns/showdown_expired'
     end
   end
 
@@ -31,10 +32,8 @@ class ShowdownsController < ApplicationController
     respond_to do |format|
       if @showdown.save
         format.html { redirect_to @showdown, notice: 'Showdown was successfully created.' }
-        format.json { render :show, status: :created, location: @showdown }
       else
         format.html { render :new }
-        format.json { render json: @showdown.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -43,10 +42,8 @@ class ShowdownsController < ApplicationController
     respond_to do |format|
       if @showdown.update(showdown_params)
         format.html { redirect_to @showdown, notice: 'Showdown was successfully updated.' }
-        format.json { render :show, status: :ok, location: @showdown }
       else
         format.html { render :edit }
-        format.json { render json: @showdown.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -55,7 +52,6 @@ class ShowdownsController < ApplicationController
     @showdown.destroy
     respond_to do |format|
       format.html { redirect_to showdowns_url, notice: 'Showdown was successfully destroyed.' }
-      format.json { head :no_content }
     end
   end
 

@@ -26,7 +26,6 @@ class SubmissionTest < ActiveSupport::TestCase
 
   it "is invalid without a properly formatted composite_id" do
     submission.composite_id = "12345"
-
     refute submission.save
   end
   

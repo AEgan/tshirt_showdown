@@ -1,0 +1,17 @@
+<div class="showdown row">
+  <h1>The <em><%= @showdown.theme %></em> Showdown</h1>
+  <div class="submission col-md-12">
+    <h3> The winning submission is:</h3>
+    <% if @winning_submission %>
+      <h4><strong>Submitted By: </strong> <%= @winning_submission.user.email%></h4>
+    <h4>Votes:<%= @winning_submission.votes.count %></h4>
+    <div class="row submission-proof">
+      <img width="170" height="170" src=<%= get_front_proof(@winning_submission.composite_id) %>>
+      <img width="170" height="170" src=<%= get_back_proof(@winning_submission.composite_id) %>> 
+    </div>
+    <% else %> 
+      <h4><strong>There were no submissions!</strong></h4>
+    <% end %>
+  </div>      
+</div>
+

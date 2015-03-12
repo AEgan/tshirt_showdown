@@ -2,6 +2,7 @@ require 'test_helper'
 
 class ShowdownTest < ActiveSupport::TestCase
   let(:showdown) { FactoryGirl.create(:showdown) }
+  let(:expired_showdown) { FactoryGirl.create(:showdown_expired)}
   let(:nathan) { FactoryGirl.create(:nathan)}
 
   #Checks Model Validations
@@ -37,6 +38,21 @@ class ShowdownTest < ActiveSupport::TestCase
   it 'get_current_user_votes scope returns no votes when user has not voted' do
     has_voted = Showdown.get_current_user_votes(showdown.id, nathan.id)
     has_voted.must_be_empty
+  end
+
+  it 'returns true when the showdown is over' do 
+    expired_showdown.over?.must_equal true 
+  end
+
+  it 'returns false when the showdown is not over' do 
+    showdown.over?.must_equal false
+  end
+
+  it 'returns the correct winner for a showdown' do
+    should_not_be_winner = FactoryGirl.create(:submission, showdown: showdown)
+    should_be_winner = FactoryGirl.create(:submission_with_votes, showdown: showdown)
+
+    showdown.get_winner.composite_id.must_equal should_be_winner.composite_id
   end
 
   private

@@ -16,8 +16,8 @@
         <h4>Votes:</h4><%= submission.votes.count %>
       </div>
       <div class="row submission-proof">
-        <img width="170" height="170" src=<%="http://www.customink.com/designs/proofs/#{submission.composite_id}/front.jpg"%>>
-        <img width="170" height="170" src=<%="http://www.customink.com/designs/proofs/#{submission.composite_id}/back.jpg"%>> 
+        <img width="170" height="170" src=<%= get_front_proof(submission.composite_id) %>>
+        <img width="170" height="170" src=<%= get_back_proof(submission.composite_id) %>> 
       </div>
       <div class="row submission-actions">
         <% unless @has_voted %>

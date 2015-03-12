@@ -11,5 +11,9 @@ class Showdown < ActiveRecord::Base
   def over? 
     self.end_date < Date.today()
   end
+
+  def get_winner 
+    self.submissions.max_by { |submission| submission.votes.count }
+  end
 end
  

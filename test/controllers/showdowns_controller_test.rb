@@ -29,9 +29,24 @@ class ShowdownsControllerTest < ActionController::TestCase
     assert_redirected_to showdown_path(assigns(:showdown))
   end
 
-  it "shows showdown" do
+  it "shows active showdown" do
     get :show, id: @showdown
+    assert_template 'showdowns/show'
     assert_response :success
+  end
+
+  it "shows expired showdown" do
+    expired_showdown = FactoryGirl.create(:showdown_expired)
+    get :show, id: expired_showdown
+    assert_response :success
+    assert_template 'showdowns/showdown_expired'
+  end
+
+  it "shows expires soon showdown" do
+    expires_soon_shodown = FactoryGirl.create(:showdown_expires_soon)
+    get :show, id: expires_soon_shodown
+    assert_response :success
+    assert_template 'showdowns/show'
   end
 
   it "gets edit" do
