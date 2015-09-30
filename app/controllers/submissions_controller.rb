@@ -16,24 +16,21 @@ class SubmissionsController < ApplicationController
   end
 
   def create
-    @submission = Submission.new()
-    @submission.assign_attributes(
-        composite_id: Submission.extract_composite_id(submission_params[:composite_id]),
-        user: current_user,
-        showdown_id: params[:showdown_id]
-      )
-    respond_to do |format|
-      if @submission.save
-        format.html { redirect_to [@showdown, @submission], notice: 'Submission was successfully created.' }
-      else
-        format.html { render :new }
-      end
+    @submission = Submission.new(submission_params.merge(foreign_key_params))
+    url = 'http://www.customink.com/design/retrieve.json'
+    params_hash = { email: @submission.email, filename: @submission.design_name }
+    response_hash = JSON.parse(RestClient.get(url, params: params_hash))
+    @submission.composite_id = response_hash['compositeId']
+    if @submission.save
+      redirect_to [@showdown, @submission], notice: 'Submission was successfully created'
+    else
+      render :new
     end
   end
 
   def update
     respond_to do |format|
-      submission_params[:composite_id] = Submission.extract_composite_id(submission_params[:composite_id]) 
+      submission_params[:composite_id] = Submission.extract_composite_id(submission_params[:composite_id])
       #submission_params[:total_votes] = @submission.votes +
       if @submission.update(submission_params)
         format.html { redirect_to [@showdown, @submission], notice: 'Submission was successfully updated.'}
@@ -62,6 +59,10 @@ class SubmissionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def submission_params
-      params.require(:submission).permit(:composite_id, :user_id, :showdown_id)
+      params.require(:submission).permit(:composite_id, :user_id, :showdown_id, :email, :design_name)
+    end
+
+    def foreign_key_params
+      { user_id: current_user.id, showdown_id: @showdown.id }
     end
 end

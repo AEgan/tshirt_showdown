@@ -12,8 +12,12 @@ class SubmissionsControllerTest < ActionController::TestCase
   end
 
   it "creates submission" do
+    stub_request(:get, "http://www.customink.com/design/retrieve.json?email=&filename=").
+      with(:headers => {'Accept'=>'*/*; q=0.5, application/xml', 'Accept-Encoding'=>'gzip, deflate', 'User-Agent'=>'Ruby'}).
+      to_return(:status => 200, :body => { 'compositeId': @submission.composite_id }.to_json, :headers => {})
+
     assert_difference('Submission.count') do
-      post :create, showdown_id: @submission.showdown, submission: { composite_id: @submission.composite_id, 
+      post :create, showdown_id: @submission.showdown, submission: { composite_id: @submission.composite_id,
                                   user_id: @submission.user_id,
                                   showdown_id: @submission.showdown_id }
     end
@@ -32,7 +36,7 @@ class SubmissionsControllerTest < ActionController::TestCase
   end
 
   it "updates submission" do
-    patch :update, submission: {  composite_id: @submission.composite_id, 
+    patch :update, submission: {  composite_id: @submission.composite_id,
                                   user_id: @submission.user_id,
                                   showdown_id: @submission.showdown_id },
                                   showdown_id: @submission.showdown_id,

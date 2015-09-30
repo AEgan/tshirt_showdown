@@ -85,6 +85,8 @@ GEM
       execjs
     coffee-script-source (1.9.1)
     columnize (0.9.0)
+    crack (0.4.2)
+      safe_yaml (~> 1.0.0)
     debug_inspector (0.0.2)
     debugger-linecache (1.2.0)
     devise (3.4.1)
@@ -94,6 +96,8 @@ GEM
       responders
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
+    domain_name (0.5.24)
+      unf (>= 0.0.5, < 1.0.0)
     erubis (2.7.0)
     execjs (2.3.0)
     factory_girl (4.5.0)
@@ -106,6 +110,8 @@ GEM
     globalid (0.3.3)
       activesupport (>= 4.1.0)
     hike (1.2.3)
+    http-cookie (1.0.2)
+      domain_name (~> 0.5)
     i18n (0.7.0)
     jbuilder (2.2.8)
       activesupport (>= 3.0.0, < 5)
@@ -129,6 +135,7 @@ GEM
       minitest (~> 5.0)
       rails (~> 4.1)
     multi_json (1.10.1)
+    netrc (0.10.3)
     nokogiri (1.6.6.2)
       mini_portile (~> 0.6.0)
     orm_adapter (0.5.0)
@@ -169,6 +176,11 @@ GEM
       json (~> 1.4)
     responders (2.1.0)
       railties (>= 4.2.0, < 5)
+    rest-client (1.8.0)
+      http-cookie (>= 1.0.2, < 2.0)
+      mime-types (>= 1.16, < 3.0)
+      netrc (~> 0.7)
+    safe_yaml (1.0.4)
     sass (3.4.13)
     sass-rails (5.0.1)
       railties (>= 4.0.0, < 5.0)
@@ -203,6 +215,9 @@ GEM
     uglifier (2.7.1)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
+    unf (0.1.4)
+      unf_ext
+    unf_ext (0.0.7.1)
     warden (1.2.3)
       rack (>= 1.0)
     web-console (2.0.0)
@@ -210,6 +225,9 @@ GEM
       binding_of_caller (>= 0.7.2)
       railties (~> 4.0)
       sprockets-rails (>= 2.0, < 4.0)
+    webmock (1.21.0)
+      addressable (>= 2.3.6)
+      crack (>= 0.3.2)
     xpath (2.0.0)
       nokogiri (~> 1.3)
 
@@ -232,8 +250,13 @@ DEPENDENCIES
   pg
   pry
   rails (= 4.2.0)
+  rest-client
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
   style_bitz!
   uglifier (>= 1.3.0)
   web-console (~> 2.0)
+  webmock
+
+BUNDLED WITH
+   1.10.6

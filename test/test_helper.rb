@@ -3,6 +3,7 @@ require File.expand_path('../../config/environment', __FILE__)
 require 'rails/test_help'
 require 'minitest/spec'
 require 'capybara/rails'
+require 'webmock/minitest'
 
 class ActiveSupport::TestCase
   # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
@@ -15,4 +16,3 @@ end
 class ActionController::TestCase
   include Devise::TestHelpers
 end
-

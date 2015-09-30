@@ -1,5 +1,5 @@
 class Submission < ActiveRecord::Base
- 
+
   COMPOSITE_ID_CHECK = /[\d\w]+\-[\d\w]+(\-[\d\w]{4})?/
   COMPOSITE_ID_VALIDATOR = /\A#{COMPOSITE_ID_CHECK}\z/
   validates :composite_id, :user_id, :showdown_id, presence: true
@@ -8,7 +8,9 @@ class Submission < ActiveRecord::Base
   has_many :votes
   belongs_to :user
   belongs_to :showdown
-  
+
+  attr_accessor :email, :design_name
+
   def self.extract_composite_id(url)
     url[COMPOSITE_ID_CHECK]
   end
