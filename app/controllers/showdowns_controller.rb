@@ -1,12 +1,11 @@
 class ShowdownsController < ApplicationController
-
+  #layout 'style_bitz/layouts/core'
   before_action :set_showdown, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
 
   def index
     @showdowns = Showdown.all
   end
-
 
   def show
     @has_voted = Showdown.get_current_user_votes(@showdown.id, current_user.id).any?
@@ -17,7 +16,6 @@ class ShowdownsController < ApplicationController
       render template: 'showdowns/showdown_expired'
     end
   end
-
 
   def new
     @showdown = Showdown.new
