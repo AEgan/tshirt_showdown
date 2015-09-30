@@ -7,11 +7,13 @@
     <h4>Votes:<%= @winning_submission.votes.count %></h4>
     <div class="row submission-proof">
       <img width="170" height="170" src=<%= get_front_proof(@winning_submission.composite_id) %>>
-      <img width="170" height="170" src=<%= get_back_proof(@winning_submission.composite_id) %>> 
+      <img width="170" height="170" src=<%= get_back_proof(@winning_submission.composite_id) %>>
+      <a href="http://www.customink.com/lab?BN=true&amp;cid=<%=@winning_submission.composite_id%>" class="btn btn-primary">Buy Now</a>
+      <a href="http://www.customink.com/g/<%=@winning_submission.composite_id%>?refsrc=proof_page_button" class="btn btn-primary">Setup a Group Order Form</a>
     </div>
-    <% else %> 
+    <% else %>
       <h4><strong>There were no submissions!</strong></h4>
     <% end %>
-  </div>      
+  </div>
 </div>
 

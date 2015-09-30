@@ -5,7 +5,9 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  resources :showdowns do 
+  resources :contacts
+
+  resources :showdowns do
     resources :submissions
   end
 

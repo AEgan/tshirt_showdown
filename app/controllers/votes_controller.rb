@@ -6,7 +6,7 @@ class VotesController < ApplicationController
     respond_to do |format|
       if @vote.save!
         format.html { redirect_to showdown_path(@vote.submission.showdown), notice: 'Thanks for voting!' }
-      else 
+      else
         format.html { redirect_to showdown_path(@vote.submission.showdown), notice: 'Could not cast vote' }
       end
     end

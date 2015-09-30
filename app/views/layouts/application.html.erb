@@ -23,7 +23,8 @@
           <% if current_user %>
             <div id="navbar" class="navbar-collapse collapse navbar-right">
                  <%= link_to "All Showdowns", showdowns_path %> |
-                 <%= link_to "Logout", destroy_user_session_path, :method => :delete %>
+                 <%= link_to "Logout", destroy_user_session_path, :method => :delete %> |
+                 <%= link_to "Contact" %>
             </div><!--/.navbar-collapse -->
           <% end %>
         </div>
@@ -40,7 +41,7 @@
   <div id="footer" class="footer">
     <div class="container">
       Developed by Dylan Pulliam - CustomInk Inkubator
-    </div> 
+    </div>
   </div>
 
 
