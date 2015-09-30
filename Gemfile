@@ -41,7 +41,6 @@ gem 'bootstrap-sass', '~> 3.2.0'
 gem 'autoprefixer-rails'
 
 gem 'rest-client'
-gem 'webmock'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
@@ -70,4 +69,6 @@ group :test do
   gem 'capybara'
   # Launchy opens web browser upon fails integration test
   gem 'launchy'
+  # only block requests in test
+  gem 'webmock'
 end
