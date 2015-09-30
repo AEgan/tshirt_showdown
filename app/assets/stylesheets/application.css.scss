@@ -13,8 +13,7 @@
  *= require_tree .
  *= require_self
  */
-@import "bootstrap-sprockets";
-@import "bootstrap";
+@import "style_bitz/style_bitz";
 
 $navbar-background: #F37321;
 $header-text: white;
@@ -32,7 +31,7 @@ html, body {
 }
 
 #header {
-  
+
 }
 
 #content {

@@ -7,6 +7,10 @@ gem 'rails', '4.2.0'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
+
+# Style library
+gem 'style_bitz', :git => 'git@github.com:customink/style_bitz.git', :branch => 'master'
+
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.1.0'
