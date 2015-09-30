@@ -19,8 +19,12 @@ class SubmissionsController < ApplicationController
     @submission = Submission.new(submission_params.merge(foreign_key_params))
     url = 'http://www.customink.com/design/retrieve.json'
     params_hash = { email: @submission.email, filename: @submission.design_name }
-    response_hash = JSON.parse(RestClient.get(url, params: params_hash))
-    @submission.composite_id = response_hash['compositeId']
+    RestClient.get(url, params: params_hash) do |response, request, result|
+      if result.code == "200"
+        response_hash = JSON.parse(response)
+        @submission.composite_id = response_hash['compositeId']
+      end
+    end
     if @submission.save
       redirect_to [@showdown, @submission], notice: 'Submission was successfully created'
     else
