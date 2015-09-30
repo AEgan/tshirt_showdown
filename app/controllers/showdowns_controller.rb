@@ -63,6 +63,6 @@ class ShowdownsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def showdown_params
-      params.require(:showdown).permit(:theme, :winning_submission, :end_date, :closed)
+      params.require(:showdown).permit(:theme, :description, :winning_submission, :end_date, :closed)
     end
 end

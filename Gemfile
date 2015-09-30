@@ -51,20 +51,16 @@ group :development, :test do
 
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
-
-  # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  gem 'spring'
-
-  # Used for testing 
+  # Used for testing
   gem 'minitest-spec-rails'
   gem 'factory_girl_rails'
 end
 
 group :test do
   # Faker generates names, emails, etc for factories
-  gem 'faker' 
+  gem 'faker'
   # Capybara programatically simulates users interaction with application
-  gem 'capybara' 
+  gem 'capybara'
   # Launchy opens web browser upon fails integration test
-  gem 'launchy' 
-end 
+  gem 'launchy'
+end
